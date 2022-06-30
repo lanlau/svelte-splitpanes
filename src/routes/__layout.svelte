@@ -15,6 +15,7 @@
 	:global(body) {
 		font-family: Helvetica, Arial, sans-serif;
 		color: rgba(116, 103, 103);
+		min-height:100vh;
 	}
 
 	:global(h1 h2) {
@@ -54,6 +55,7 @@
 		-webkit-box-flex: 1;
 		-ms-flex-positive: 1;
 		flex-grow: 1;
+		min-height:100vh;
 		max-width: 1150px;
 		margin-left: auto;
 		margin-right: auto;

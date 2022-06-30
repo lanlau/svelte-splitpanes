@@ -9,4 +9,12 @@ declare namespace App {
 	// interface Platform {}
 	// interface Session {}
 	// interface Stuff {}
+	
+	interface ComponentMeta{
+		name:string,
+		path:string,
+		ext:string,
+		code:string
+	}
+
 }

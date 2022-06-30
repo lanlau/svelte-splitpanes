@@ -6,19 +6,7 @@
 
 	let value = [50];
 
-	let code = `
-<script>
-    let value = [50];
-<${'/'}script>
-<RangeSlider float bind:values={value} min={0} max={100} />
-<Splitpanes class="default-theme" style="height: 400px">
-	<Pane bind:size={value[0]}>
-		<span>{value[0]}%</span>
-	</Pane>
-	<Pane size={100 - value[0]}>
-		<span>{100 - value[0]}%</span>
-	</Pane>
-</Splitpanes>`;
+	
 </script>
 
 <h2>Programmatic resizing</h2>
@@ -35,5 +23,3 @@
 		<span>{100 - value[0]}%</span>
 	</Pane>
 </Splitpanes>
-
-<HighlightSvelte {code} />

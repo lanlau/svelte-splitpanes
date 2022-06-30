@@ -2,18 +2,7 @@
 	import { Pane, Splitpanes } from '$lib/.';
 	import { HighlightSvelte } from 'svelte-highlight';
 
-	let code = `
-<Splitpanes class="default-theme" horizontal style="height: 400px">
-    <Pane size={65}>
-        <span>1</span>
-    </Pane>
-    <Pane size={10}>
-        <span>2</span>
-    </Pane>
-    <Pane size={25}>
-        <span>3</span>
-    </Pane>
-</Splitpanes>`;
+	
 </script>
 
 <h2>Default pane size</h2>
@@ -37,5 +26,3 @@
 		<span>3</span>
 	</Pane>
 </Splitpanes>
-
-<HighlightSvelte {code} />
