@@ -19,7 +19,7 @@ const config = {
 		}),
 		paths: {
 			// change below to your repo name
-			base: dev ? '' : '/svelte-splitpanes'
+			base: '' //dev ? '' : '/svelte-splitpanes'
 		},
 		vite: {
 			resolve: {
