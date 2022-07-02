@@ -12,7 +12,10 @@
 </div>
 
 <style>
-	:global(body) {
+:global(*){
+	box-sizing: border-box;
+}
+:global(body) {
 		font-family: Helvetica, Arial, sans-serif;
 		color: rgba(116, 103, 103);
 		min-height:100vh;
@@ -36,7 +39,7 @@
 		color: rgba(106, 106, 106, 0.6);
 		display: flex;
 		position: relative;
-		font-size: 3em;
+		font-size: 1em;
 	}
 
 	:global(em.specs) {
@@ -50,6 +53,23 @@
 		text-align: center;
 		font-size: 0.5em;
 	}
+
+	/* additional styling to the code area */
+	:global(code.hljs) {
+		tab-size: 4;
+		
+	}
+	:global(pre) {
+		tab-size: 4;
+		font-size: 0.8rem;
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		overflow-y: auto;
+	}
+
+
+
 
 	.page-container {
 		-webkit-box-flex: 1;

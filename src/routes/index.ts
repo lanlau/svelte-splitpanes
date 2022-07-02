@@ -4,9 +4,8 @@ import { getAllFiles } from "../explorer/utils";
 /** @type {import('./__types/index').RequestHandler} */
 export async function get() {
 
-    //browse the actual repo to find svelte components, starting from the comp dir, only first level
+    //browse the actual repo to find svelte components, starting from the comp dir, only first level and only taking svelte files
     const components:App.ComponentMeta[]=getAllFiles('./src/comp/',[],{recursive:false,validExt:/\.svelte/});
-   //console.log(components)
     if (components) {
       return {
         body: { components }

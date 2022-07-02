@@ -1,22 +1,24 @@
 <script lang="ts">
 	import Splitpanes from '$lib/Splitpanes.svelte';
 	import Pane from '$lib/Pane.svelte';
-	import { HighlightSvelte } from 'svelte-highlight';
+	import CodeArea from '$comp/extras/CodeArea.svelte';
 	
 
     export let height="600px";
 	export let components:App.ComponentMeta[] = [];
 	export let selectedComponent:App.ComponentMeta=null;
-let errorMessage;
-let newPath;
+	
+	
 	const loadDynamicComponent = async (path: string) => {
-		
-		newPath=path.replace('./src/comp/','');
+		//dynamic import plugin requires a relative path, so we clean the path
+		const newPath=path.replace('./src/comp/','');
 		try{
+			//use the newPath to build a relative path
+			//setting "../comp" statically in the import ensure the plugin only preload files in this dir
 			const { default: Comp } = await import('../comp/'+newPath);
 			DynamicComponent = Comp;
 		}catch(error){
-			errorMessage=JSON.stringify(error)
+			console.error(error)
 		}
 		
 	};
@@ -26,8 +28,7 @@ let newPath;
 
 	let showCode=false;
 </script>
-{errorMessage}
-{newPath}
+
 <Splitpanes id="demo" theme='demo-theme'  horizontal={false} style="height:{height}">
 	<Pane size={25} snapSize={10} class="component-list">
 		<ul>
@@ -59,7 +60,7 @@ let newPath;
 			{#if showCode}
 			<Pane size={30} class="component-code">
 				{#if selectedComponent}
-					<HighlightSvelte code={selectedComponent.code} />
+					<CodeArea id="{selectedComponent.name}" code={selectedComponent.code} />
 				{/if}
 			</Pane>
 			{/if}
@@ -89,7 +90,7 @@ let newPath;
 	li {
 		list-style: none;
 		padding: 10px;
-		border-bottom: 0.1px solid #eee;
+		border-bottom: 0.1px solid #fff;
 		cursor: pointer;
 		color:rgba(116, 103, 103);
 
@@ -113,10 +114,10 @@ let newPath;
 	height:100%;
 	justify-content: flex-start;
 	align-items: flex-start;
-	
+	background-color:#fff!important;
 	overflow-y: auto;
-	padding-left:5px;
-	padding-right:10px;
+	overflow-x:auto;
+	margin-right:10px;
 	font-size: 1rem;
 
 	.toggle{
@@ -147,64 +148,103 @@ let newPath;
 	p{
 		padding:5px;
 		margin:10px 0 10px 0;	
-	}	
-
-			
+	}		
 }
-.component-code {
-	font-size: 0.8rem;
-	overflow-y: auto;
-	pre {
-		width: 100%;
-		height: 100%;
-	}
-}	
 
 
 //splitpanes themes
 
-#demo.splitpanes.demo-theme{
-	border:0.1px solid #eee;
-}
+
 .splitpanes.demo-theme {
 		>.splitpanes__pane {
-			
-			background-color: #fff;
+			background-color: #f2f2f2;
 		}
 		>.splitpanes__splitter {
-			background-color: #eee;
+			background-color: #fff;
+			box-sizing: border-box;
 			position: relative;
-			min-width:0.5px;
-			min-height:0.5px;
-			&:before {
+			flex-shrink: 0;
+			&:before,
+			&:after {
 				content: '';
 				position: absolute;
-				left: 0;
-				top: 0;
-				transition: opacity 0.2s;
-				background-color: rgb(74, 64, 212);
-				opacity: 0;
-				z-index: 1;
+				top: 50%;
+				left: 50%;
+				background-color: rgba(0, 0, 0, 0.15);
+				transition: background-color 0.3s;
 			}
-			&:hover:before {
-				opacity: 1;
+			&:hover:before,
+			&:hover:after {
+				background-color: rgba(0, 0, 0, 0.25);
+			}
+			&:first-child {
+				cursor: auto;
 			}
 		}
 }
 .demo-theme {
-		&.splitpanes--vertical > .splitpanes__splitter:before {
-			left: 0;
-			right: -1px;
-			height: 100%;
+		&.splitpanes .splitpanes .splitpanes__splitter {
+			z-index: 1;
+		}
+		&.splitpanes--vertical > .splitpanes__splitter,
+		>.splitpanes--vertical > .splitpanes__splitter {
+			width: 7px;
+			border-left: 1px solid #eee;
+			margin-left: -1px;
 			cursor: col-resize;
+			&:before,
+			&:after {
+				transform: translateY(-50%);
+				width: 1px;
+				height: 30px;
+			}
+			&:before {
+				margin-left: -2px;
+			}
+			&:after {
+				margin-left: 1px;
+			}
 		}
-		&.splitpanes--horizontal > .splitpanes__splitter:before {
-			top: 0;
-			bottom: -1px;
-			width: 100%;
+		&.splitpanes--horizontal > .splitpanes__splitter,
+		>.splitpanes--horizontal > .splitpanes__splitter {
+			height: 7px;
+			border-top: 1px solid #eee;
+			margin-top: -1px;
 			cursor: row-resize;
+			&:before,
+			&:after {
+				transform: translateX(-50%);
+				width: 30px;
+				height: 1px;
+			}
+			&:before {
+				margin-top: -2px;
+			}
+			&:after {
+				margin-top: 1px;
+			}
 		}
-}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </style>

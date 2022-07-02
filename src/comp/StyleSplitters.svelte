@@ -12,7 +12,6 @@
 </p>
 
 
-
 <p>
 	By altering the above styles, it is possible to achieve neat visual adjustments. Please note how each Splitpanes
 	references our new `theme="my-theme"`
@@ -40,6 +39,9 @@
 </Splitpanes>
 
 <style global lang="scss">
+	
+
+
 	.splitpanes.my-theme {
 		.splitpanes__pane {
 			background-color: #f8f8f8;

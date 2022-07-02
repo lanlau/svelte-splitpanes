@@ -1,6 +1,6 @@
 <script>
 	import { Pane, Splitpanes } from '$lib/.';
-	import { HighlightSvelte } from 'svelte-highlight';
+	import CodeArea from '$comp/extras/CodeArea.svelte';
 
 </script>
 

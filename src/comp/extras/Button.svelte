@@ -135,6 +135,7 @@
 
 <style>
 	button {
+		flex-shrink:0;
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
@@ -145,7 +146,7 @@
 		height: var(--height);
 		width: var(--width);
 		max-width: 100%;
-		margin: 0;
+		margin: 10px;
 		padding: 5px;
 		position: relative;
 		border-radius: var(--radius);
@@ -192,6 +193,7 @@
 		height: 100%;
 		width: 100%;
 		display: flex;
+		flex-shrink:0;
 		align-items: center;
 		justify-content: center;
 		margin: 0;

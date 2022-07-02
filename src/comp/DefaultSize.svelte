@@ -1,8 +1,6 @@
 <script>
 	import { Pane, Splitpanes } from '$lib/.';
-	import { HighlightSvelte } from 'svelte-highlight';
-
-	
+	import CodeArea from '$comp/extras/CodeArea.svelte';
 </script>
 
 <h2>Default pane size</h2>
@@ -12,7 +10,9 @@
 	<b
 		>If you provide a default size, make sure you provide it for all the panes for a total equals to 100%. If a pane is
 		missing a default size, then all the panes will have the same size.</b
-	><br /> Note that setting a default value is different than setting a min or max value.
+	>
+	<br />
+	Note that setting a default value is different than setting a min or max value.
 </p>
 
 <Splitpanes class="default-theme" horizontal style="height: 400px">

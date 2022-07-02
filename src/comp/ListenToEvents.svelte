@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Pane, Splitpanes } from '$lib/.';
-	import { HighlightSvelte } from 'svelte-highlight';
+	import CodeArea from '$comp/extras/CodeArea.svelte';
 	import TextArea from '$comp/extras/TextAreaAutosize.svelte';
 
 	let val = '// Event name: Event params   (Last event at the top)';

@@ -1,6 +1,6 @@
 <script>
 	import { Pane, Splitpanes } from '$lib/.';
-	import { HighlightSvelte } from 'svelte-highlight';
+	import CodeArea from '$comp/extras/CodeArea.svelte';
 
 	import RangeSlider from 'svelte-range-slider-pips';
 
@@ -12,7 +12,8 @@
 <h2>Programmatic resizing</h2>
 <p>This example shows the programmatic way of resizing panes with data biding. And how it works both ways.</p>
 
-<RangeSlider float bind:values={value} min={0} max={100} />
+<RangeSlider  float bind:values={value} min={0} max={100} />
+
 <Splitpanes class="default-theme" style="height: 400px">
 	<Pane bind:size={value[0]}>
 		<span>{value[0]}%</span>
@@ -23,3 +24,11 @@
 		<span>{100 - value[0]}%</span>
 	</Pane>
 </Splitpanes>
+
+
+<style global>
+.rangeSlider{
+	display:flex;
+	width:95%;
+}
+</style>

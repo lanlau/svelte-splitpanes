@@ -3,7 +3,23 @@ import * as path from "path"
 
 
 const __dirname = path.resolve();
-console.log(__dirname)
+
+/* 
+create an array of objects (ComponentMeta see 'app.d.ts') representing the file entries from filesystem
+(
+  ComponentMeta:{
+    name:string, =filename
+		path:string, =relativepath
+		ext:string, =file extension (contains the initial ".")
+		code:string = full source code of the file
+  }
+) 
+-dirPath = directory from which we start the exploration eg: '.src/comp/'
+-arrayOfFiles = will contains the list of files found
+-options:object with 2 possible options: 
+    -recursive:boolean = do we want to go deeper in the tree when we found directories
+    -validExt:regexp = regexp which allow to match for extensions we want to keep eg: /\.svelte/
+*/
 export const getAllFiles = function(dirPath:string, arrayOfFiles:App.ComponentMeta[],options) {
     const files = fs.readdirSync(dirPath)
   
