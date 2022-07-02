@@ -1,3 +1,5 @@
+import dynamicImport from 'vite-plugin-dynamic-import';
+
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
 import path from 'path';
@@ -6,6 +8,7 @@ const dev = process.env.NODE_ENV === 'development';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+	
 	preprocess: preprocess(),
 
 	kit: {
@@ -19,9 +22,13 @@ const config = {
 		}),
 		paths: {
 			// change below to your repo name
-			base: '' //dev ? '' : '/svelte-splitpanes'
+			base: dev ? '' : '' // /lanlau/svelte-spitpanes'
 		},
 		vite: {
+			plugins: [
+				dynamicImport.default()
+			],
+		
 			resolve: {
 				optimizeDeps: {
 					include: ['highlight.js', 'highlight.js/lib/core']

@@ -3,7 +3,7 @@ import * as path from "path"
 
 
 const __dirname = path.resolve();
-
+console.log(__dirname)
 export const getAllFiles = function(dirPath:string, arrayOfFiles:App.ComponentMeta[],options) {
     const files = fs.readdirSync(dirPath)
   
@@ -16,13 +16,14 @@ export const getAllFiles = function(dirPath:string, arrayOfFiles:App.ComponentMe
         }
       } else {
         const filePath=path.join(__dirname, dirPath, "/", file)
+        const relativePath=dirPath  +file
         const fileExt=path.extname(filePath)
         const fileName=path.basename(filePath).replace(fileExt,'')
         const sourceCode=fs.readFileSync(filePath).toString()
         const component:App.ComponentMeta={
           name:fileName,
           ext:fileExt,
-          path:filePath,
+          path:relativePath,
           code:sourceCode
         };
   

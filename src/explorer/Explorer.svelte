@@ -2,13 +2,19 @@
 	import Splitpanes from '$lib/Splitpanes.svelte';
 	import Pane from '$lib/Pane.svelte';
 	import { HighlightSvelte } from 'svelte-highlight';
+	
 
     export let height="600px";
 	export let components:App.ComponentMeta[] = [];
 	export let selectedComponent:App.ComponentMeta=null;
-
+let newPathBefore;
+let newPath;
 	const loadDynamicComponent = async (path: string) => {
-		const { default: Comp } = await import(path);
+		newPathBefore=path
+		newPath=path.replace('./src/comp/','');
+		
+		console.log('newPath',{newPath}) 
+		const { default: Comp } = await import('../comp/'+newPath);
 		DynamicComponent = Comp;
 	};
 
@@ -17,6 +23,8 @@
 
 	let showCode=false;
 </script>
+{newPathBefore}
+{newPath}
 <Splitpanes id="demo" theme='demo-theme'  horizontal={false} style="height:{height}">
 	<Pane size={25} snapSize={10} class="component-list">
 		<ul>
