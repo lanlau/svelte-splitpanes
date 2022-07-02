@@ -4,7 +4,7 @@
 	import CodeArea from '$comp/extras/CodeArea.svelte';
 	
 
-    export let height="600px";
+    export let height="800px";
 	export let components:App.ComponentMeta[] = [];
 	export let selectedComponent:App.ComponentMeta=null;
 	
