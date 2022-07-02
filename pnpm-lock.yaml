@@ -17,7 +17,7 @@ specifiers:
   lint-staged: 13.0.3
   prettier: 2.7.1
   prettier-plugin-svelte: 2.7.0
-  sass: 1.53.0
+  sass: ^1.53.0
   serve: 13.0.2
   standard-version: 9.5.0
   svelte: 3.48.0
@@ -28,6 +28,7 @@ specifiers:
   svelte2tsx: 0.5.11
   tslib: 2.4.0
   typescript: 4.7.4
+  vite-plugin-dynamic-import: ^0.9.9
 
 optionalDependencies:
   '@playwright/test': 1.22.2
@@ -59,6 +60,7 @@ devDependencies:
   svelte2tsx: 0.5.11_lvfi2wesz6u4l5rfbnetbucfmm
   tslib: 2.4.0
   typescript: 4.7.4
+  vite-plugin-dynamic-import: 0.9.9
 
 packages:
 
@@ -3878,6 +3880,12 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
     optional: true
+
+  /vite-plugin-dynamic-import/0.9.9:
+    resolution: {integrity: sha512-EI+VHRd5nRj/0X6V70jfIhOyNx/S4c4VkjttTuRp2pMn5tuS/XtdjI5TTiekDmcaCXyZldvuu7kWBSb6CuIIGg==}
+    dependencies:
+      fast-glob: 3.2.11
+    dev: true
 
   /vite/2.9.13_sass@1.53.0:
     resolution: {integrity: sha512-AsOBAaT0AD7Mhe8DuK+/kE4aWYFMx/i0ZNi98hJclxb4e0OhQcZYUrvLjIaQ8e59Ui7txcvKMiJC1yftqpQoDw==}
