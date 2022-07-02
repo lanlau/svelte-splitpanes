@@ -7,15 +7,18 @@
     export let height="600px";
 	export let components:App.ComponentMeta[] = [];
 	export let selectedComponent:App.ComponentMeta=null;
-let newPathBefore;
+let errorMessage;
 let newPath;
 	const loadDynamicComponent = async (path: string) => {
-		newPathBefore=path
-		newPath=path.replace('./src/comp/','');
 		
-		console.log('newPath',{newPath}) 
-		const { default: Comp } = await import('../comp/'+newPath);
-		DynamicComponent = Comp;
+		newPath=path.replace('./src/comp/','');
+		try{
+			const { default: Comp } = await import('../comp/'+newPath);
+			DynamicComponent = Comp;
+		}catch(error){
+			errorMessage=JSON.stringify(error)
+		}
+		
 	};
 
 	let DynamicComponent;
@@ -23,7 +26,7 @@ let newPath;
 
 	let showCode=false;
 </script>
-{newPathBefore}
+{errorMessage}
 {newPath}
 <Splitpanes id="demo" theme='demo-theme'  horizontal={false} style="height:{height}">
 	<Pane size={25} snapSize={10} class="component-list">
